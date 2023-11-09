@@ -18,7 +18,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('jenkins') {  // Assuming the Terraform code is in the 'jenkins' directory
+                    dir('jenkins/jenkinscript') {  // Assuming the Terraform code is in the 'jenkins/jenkinscript' directory
                         sh 'terraform init'
                     }
                 }
@@ -28,7 +28,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    dir('jenkins') {
+                    dir('jenkins/jenkinscript') {
                         sh 'terraform plan -out=tfplan'
                     }
                 }
@@ -41,7 +41,7 @@ pipeline {
             }
             steps {
                 script {
-                    dir('jenkins') {
+                    dir('jenkins/jenkinscript') {
                         sh 'terraform apply -auto-approve tfplan'
                     }
                 }
