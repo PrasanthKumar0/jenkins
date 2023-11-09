@@ -18,7 +18,8 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    dir('jenkins') {  
+                    dir('jenkins
+/main.tf') {  
                         sh 'terraform init'
                     }
                 }
@@ -28,7 +29,8 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    dir('jenkins') {
+                    dir('jenkins
+/main.tf') {
                         sh 'terraform plan -out=tfplan'
                     }
                 }
@@ -41,7 +43,8 @@ pipeline {
             }
             steps {
                 script {
-                    dir('jenkins') {
+                    dir('jenkins
+/main.tf') {
                         sh 'terraform apply -auto-approve tfplan'
                     }
                 }
